@@ -285,6 +285,69 @@ a:hover {
   max-width: 800px;
 }
 
+/* Hero Avatar */
+.hero-avatar {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 2rem;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.avatar-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent-primary),
+    var(--accent-secondary),
+    var(--accent-cyan),
+    var(--accent-emerald),
+    var(--accent-primary)
+  );
+  animation: ring-spin 6s linear infinite;
+  z-index: 0;
+}
+
+.avatar-ring::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  z-index: 1;
+}
+
+@keyframes ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+.avatar-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  box-shadow:
+    0 0 30px rgba(99, 102, 241, 0.25),
+    0 0 60px rgba(139, 92, 246, 0.1);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.hero-avatar:hover .avatar-img {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 40px rgba(99, 102, 241, 0.35),
+    0 0 80px rgba(139, 92, 246, 0.15);
+}
+
+.hero-avatar:hover .avatar-ring {
+  animation-duration: 3s;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
